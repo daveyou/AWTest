@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -30,9 +31,10 @@ ON [EMP_cte].[ManagerID] = e.[EmployeeID]
 INNER JOIN [Person].[Contact] c 
 ON e.[ContactID] = c.[ContactID]
 ORDER BY [RecursionLevel], [ManagerID], [EmployeeID]
-OPTION (MAXRECURSION 25) 
+OPTION (MAXRECURSION 50) 
 END;
 GO
+
 EXEC sp_addextendedproperty N'MS_Description', N'Stored procedure using a recursive query to return the direct and indirect employees of the specified manager.', 'SCHEMA', N'dbo', 'PROCEDURE', N'uspGetManagerEmployees', NULL, NULL
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Input parameter for the stored procedure uspGetManagerEmployees. Enter a valid ManagerID from the HumanResources.Employee table.', 'SCHEMA', N'dbo', 'PROCEDURE', N'uspGetManagerEmployees', 'PARAMETER', N'@ManagerID'
