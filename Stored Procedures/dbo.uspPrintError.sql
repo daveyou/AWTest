@@ -7,7 +7,7 @@ CREATE PROCEDURE [dbo].[uspPrintError]
 AS
 BEGIN
 SET NOCOUNT ON;
-PRINT 'Error ' + CONVERT(varchar(50), ERROR_NUMBER()) +
+PRINT 'Error ' + CONVERT(varchar(78), ERROR_NUMBER()) +
 ', Severity ' + CONVERT(varchar(5), ERROR_SEVERITY()) +
 ', State ' + CONVERT(varchar(5), ERROR_STATE()) + 
 ', Procedure ' + ISNULL(ERROR_PROCEDURE(), '-') + 
@@ -15,6 +15,7 @@ PRINT 'Error ' + CONVERT(varchar(50), ERROR_NUMBER()) +
 PRINT ERROR_MESSAGE();
 END;
 GO
+
 
 
 
